@@ -40,6 +40,10 @@ jobs:
           bundler-cache: true # runs 'bundle install' and caches installed gems automatically
           cache-version: 0 # Increment this number if you need to re-download cached gems
 
+      # Disable frozen mode to allow Gemfile.lock updates
+      - name: Disable frozen mode
+        run: bundle config set frozen false
+
       # Setup Node.js and install npm dependencies
       - name: Setup Node.js
         uses: actions/setup-node@v3
@@ -65,7 +69,12 @@ jobs:
 
       - name: Upload artifact
         # Automatically uploads an artifact from the './_site' directory by default
-        uses: actions/upload-pages-artifact@v3
+        uses:
+          actions/upload-pages-artifact@v3
+
+          # Re-enable frozen mode after bundle install
+      - name: Re-enable frozen mode
+        run: bundle config set frozen true
 
   # Deployment job
   deploy:
