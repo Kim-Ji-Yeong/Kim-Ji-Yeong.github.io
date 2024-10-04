@@ -18,8 +18,8 @@ title: 김지영 # the main title
 tagline: |
   const developer = { <br>
     name: "김지영", <br>
-    role: "Frontend Developer",
-    skills: ["JavaScript", "React", "Next.js"],
+    role: "Frontend Developer", <br>
+    skills: ["JavaScript", "React", "Next.js"], <br>
   }
 # it will display as the subtitle
 description: >- # used by seo meta and the atom feed
