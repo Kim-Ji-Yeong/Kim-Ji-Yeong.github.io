@@ -49,6 +49,10 @@ jobs:
       - name: Install npm dependencies
         run: npm install
 
+      # 추가로 bootstrap과 sass를 설치하는 단계
+      - name: Install Bootstrap and SASS
+        run: npm install bootstrap sass
+
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v5
