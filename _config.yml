@@ -16,8 +16,8 @@ timezone: Asia/Shanghai
 
 title: 김지영 # the main title
 tagline: |
-  const developer = {
-    name: "김지영",
+  const developer = { <br>
+    name: "김지영", <br>
     role: "Frontend Developer",
     skills: ["JavaScript", "React", "Next.js"],
   }
