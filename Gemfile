@@ -2,11 +2,12 @@
 
 source "https://rubygems.org"
 
-gemspec
+# gemspec
 
 # jekyll과 테마를 Gemfile에서 직접 지정
-gem "jekyll", "~> 4.2.0"
-gem "jekyll-theme-chirpy"
+gem "jekyll", "~> 4.3"
+gem "jekyll-theme-chirpy", git: "https://github.com/cotes2020/jekyll-theme-chirpy.git"
+
 
 gem "html-proofer", "~> 5.0", group: :test
 
