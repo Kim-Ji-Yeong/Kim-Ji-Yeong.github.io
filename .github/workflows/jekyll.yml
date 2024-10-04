@@ -1,41 +1,24 @@
-name: Build and Deploy Jekyll site
+name: Jekyll CI
 
 on:
   push:
     branches:
-      - main # 사이트를 빌드할 브랜치
+      - main
 
 jobs:
-  build:
+  jekyll:
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v3
 
-      - name: Setup Ruby
-        uses: ruby/setup-ruby@v1
+      - uses: actions/cache@v1
         with:
-          ruby-version: "3.1" # Ruby 버전을 지정
-          bundler-cache: true
+          path: vendor/bundle
+          key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-gems-
 
-      - name: Configure Git safe directory
-        run: git config --global --add safe.directory /github/workspace
-
-      # 캐시 클리어 명령을 추가
-      - name: Clear Bundler cache
-        run: |
-          bundle clean --force
-
-      - name: Install dependencies
-        run: |
-          bundle install
-
-      - name: Build the site
-        run: |
-          bundle exec jekyll build
-
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.JEKYLL_PAT }}
-          publish_dir: ./_site
+      - uses: helaili/jekyll-action@2.0.3
+        env:
+          JEKYLL_PAT: ${{ secrets.JEKYLL_PAT }}
