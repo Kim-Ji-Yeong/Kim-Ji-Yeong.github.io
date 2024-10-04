@@ -24,7 +24,8 @@ source "https://rubygems.org"
 # gemspec
 
 gem "jekyll", "~> 4.3"
-gem "jekyll-theme-chirpy", git: "https://github.com/cotes2020/jekyll-theme-chirpy.git"
+# gem "jekyll-theme-chirpy", git: "https://github.com/cotes2020/jekyll-theme-chirpy.git"
+git_source(:github) {|jekyll-theme-chirpy| "https://github.com/cotes2020/jekyll-theme-chirpy.git"} 
 
 
 gem "html-proofer", "~> 5.0", group: :test
