@@ -18,6 +18,11 @@ jobs:
           ruby-version: "3.1" # Ruby 버전을 지정
           bundler-cache: true
 
+      # 캐시 클리어 명령을 추가
+      - name: Clear Bundler cache
+        run: |
+          bundle clean --force
+
       - name: Install dependencies
         run: |
           bundle install
